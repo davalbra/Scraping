@@ -9,6 +9,7 @@ class Extractor
     info = URI.open(link)
     datos = info.read
     @parsed_content = Nokogiri::HTML(datos)
+    puts("hola")
   end
 
   
