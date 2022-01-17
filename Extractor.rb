@@ -10,6 +10,7 @@ class Extractor
     datos = info.read
     @parsed_content = Nokogiri::HTML(datos)
     puts("hola")
+    puts("hola de nuevo")
   end
 
   
