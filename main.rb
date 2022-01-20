@@ -1,38 +1,15 @@
-puts "Scraper Ruby"
-require 'open-uri'
-require 'nokogiri'
-class Dani
-  @lenguajes
-  @dinero
-  def initialize (link)
-    peliculas = URI.open(link)
-    datos = peliculas.read
-    parsed_content = Nokogiri::HTML(datos)
-    @lenguajes=parsed_content.css(".mtr-table").css('.mtr-td-tag')
-    contador=0
-    @lenguajes.each do |row|
-       
-        if(row.attribute('data-mtr-content').inner_text=="POSICIÓN")
-            puts 'pos'
-            puts row.css('.mtr-cell-content').inner_text
-            contador+=1
-        end
-        if(row.attribute('data-mtr-content').inner_text=="NÚMERO DE VALORACIONES")
-            puts 'numero de valor'
-            puts row.css('.mtr-cell-content').inner_text
-            contador+=1
-        end
-        if(row.attribute('data-mtr-content').inner_text=="CATEGORÍA")
-            puts 'categoria'
-            puts row.css('.mtr-cell-content').inner_text
-            contador+=1
-        end
-       
-    end
-        puts "estas son las vuetlas #{contador}"
-  end
-  def metodoPrincipal()
-    puts "prueba"
+require './Dani.rb'
+menu = "Menu Scrapeando 
+v0.01
+a. Top 10
+b. Top 100
+c. Todas las películas
+d. Extraer por palabra clave
+e. Salir"
+link="https://aulapro.co/especiales-aulapro/los-100-mejores-cursos-de-coursera-de-todos-los-tiempos/"
+scrap1=Dani.new(link)
+scrap1.metodoPrincipal
+
     end
            
 end
