@@ -3,10 +3,9 @@ require 'open-uri'
 require 'nokogiri'
 class Dani
   @lenguajes
-  @dinero
   def initialize (link)
-    peliculas = URI.open(link)
-    datos = peliculas.read
+    leer_html = URI.open(link)
+    datos = leer_html.read
     parsed_content = Nokogiri::HTML(datos)
     @lenguajes=parsed_content.css(".mtr-table").css('.mtr-td-tag')
     contador=0
