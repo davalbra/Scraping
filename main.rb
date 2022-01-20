@@ -1,11 +1,12 @@
-puts "Scraper StackOverflow"
-require 'open-uri'
-require 'nokogiri'
-require 'csv'
-require './Extractor.rb'
+require './DavidBravo.rb'
+menu = "Menu Scrapeando v0.01
+a. Top 10
+b. Top 100
+c. Todas las películas
+d. Extraer por palabra clave
+e. Salir"
 
-link = "https://www.jetbrains.com/es-es/lp/devecosystem-2021/"
 
-p1 = Extractor.new(link)
-puts p1
-p1.obtener()
+link="https://insights.stackoverflow.com/survey/2021"
+scrap=DavidBravo.new(link)
+scrap.metodoPrincipal
