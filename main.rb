@@ -1,18 +1,38 @@
-link = "https://aulapro.co/especiales-aulapro/los-100-mejores-cursos-de-coursera-de-todos-los-tiempos/"
-
- def self.data_from_link(link)
-        doc = Nokogiri::HTML(open(link))
-        @occurances = []
-        doc.xpath("//tr").each do |x|
-          posicion = doc.x("td")[0].text
-          nombre_curso = doc.x("td")[1].text
-          calificacion = doc.x("td")[2].text
-          valoraciones = doc.x("td")[4].text
-          categoria = doc.x("td")[5].text
-          source = doc.search(".links li.last a").attr("href").value
-          @occurances << {:posicion => posicion, :nombre_curso => nombre_curso, :calificacion => calificacion, :valoraciones => valoraciones, :categoria => categoria, :source => source}
+puts "Scraper Ruby"
+require 'open-uri'
+require 'nokogiri'
+class Dani
+  @lenguajes
+  @dinero
+  def initialize (link)
+    peliculas = URI.open(link)
+    datos = peliculas.read
+    parsed_content = Nokogiri::HTML(datos)
+    @lenguajes=parsed_content.css(".mtr-table").css('.mtr-td-tag')
+    contador=0
+    @lenguajes.each do |row|
+       
+        if(row.attribute('data-mtr-content').inner_text=="POSICIÓN")
+            puts 'pos'
+            puts row.css('.mtr-cell-content').inner_text
+            contador+=1
         end
-        puts @occurances
-      end
-  
-puts "Fin de práctica"
+        if(row.attribute('data-mtr-content').inner_text=="NÚMERO DE VALORACIONES")
+            puts 'numero de valor'
+            puts row.css('.mtr-cell-content').inner_text
+            contador+=1
+        end
+        if(row.attribute('data-mtr-content').inner_text=="CATEGORÍA")
+            puts 'categoria'
+            puts row.css('.mtr-cell-content').inner_text
+            contador+=1
+        end
+       
+    end
+        puts "estas son las vuetlas #{contador}"
+  end
+  def metodoPrincipal()
+    puts "prueba"
+    end
+           
+end
