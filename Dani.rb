@@ -1,4 +1,3 @@
-puts "Scraper Ruby"
 require 'open-uri'
 require 'nokogiri'
 class Dani

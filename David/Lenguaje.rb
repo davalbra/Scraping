@@ -1,7 +1,7 @@
 class Lenguaje
-    @nombre
-    @dinero
-    @tiempo
+    attr_accessor :nombre
+    attr_accessor :dinero
+    attr_accessor :tiempo
     def initialize(nombre,dinero,tiempo)
         @nombre=nombre
         @dinero=dinero

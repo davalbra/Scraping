@@ -1,9 +1,14 @@
-require './DavidBravo.rb'
+puts "Scraper Ruby"
+require_relative './David/DavidBravo.rb'
 require './Dani.rb'
 
+ 
+linkDavidBravo="https://insights.stackoverflow.com/survey/2021"
+linkDani="https://aulapro.co/especiales-aulapro/los-100-mejores-cursos-de-coursera-de-todos-los-tiempos/"
+ 
+# scrapDani=Dani.new(linkDani)
+# scrapDani.metodoPrincipal
 
-link="https://insights.stackoverflow.com/survey/2021"
 
-
-scrap1=DavidBravo.new(link1)
-scrap1.metodoPrincipal
+scrapDavidBravo=DavidBravo.new(linkDavidBravo)
+scrapDavidBravo.metodoPrincipal
