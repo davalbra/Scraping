@@ -1,9 +1,8 @@
 import csv
 from builtins import str, max
-
 from matplotlib import pyplot as plt
-from matplotlib.pyplot import figure
 import numpy as np
+
 rows=[]
 top=5
 cantidad=0
@@ -39,9 +38,9 @@ indice = np.arange(len(nombres[:top]))
 
 def add_value_label(x_list,y_list,y_list2):
     for i in range(0, len(x_list)):
-        valor=round(y_list[i-1],2)
+        valor=round(y_list[i-1]*100)
         h1=y_list[i-1]/2
-        valor2=round(y_list2[i],2)
+        valor2=round(y_list2[i]*100)
         plt.text(i,h1,f"{valor}%", ha="center")
         plt.text(i,h1*2+ y_list2[i ] / 2, f"{valor2}%", ha="center")
 ## Se crean las primeras barras
