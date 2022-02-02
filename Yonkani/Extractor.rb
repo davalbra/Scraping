@@ -30,11 +30,24 @@ class Extractor
 
   def obtenerDatosTrabajo()
     CSV.open('trabajo.csv', 'wb') do |csv|
-      csv << %w[Presencial Hibrido Remoto]
+      csv << %w[Como_Trabajaban_Antes Donde_Esperan_Trabajar]
       extract3 = @parsed_content.css('.DefaultLayout').css('#improving-how-we-work').css('.styles_PageSection__2O4NI').css('.mx-auto.max-w-screen-xl.px-6').css('.css-sanqhm').css('.styles_ChartButterfly__zfTi6').css('.w-full').each do |titulos|
         derecha = titulos.css('.text-right').inner_text
         izquerda = titulos.css('.text-left').inner_text
-        puts titulos.css('tr').css('td').css('.styles_ChartBarInline__ZXWLP').css('.styles_ChartBarInline_bar__3DAmB').css('.styles_ChartBarInline_value__1Vrvv').inner_text
+        contador = 0
+        array = []
+        titulos.css('tr').css('td').css('.styles_ChartBarInline__ZXWLP').css('.styles_ChartBarInline_bar__3DAmB').css('.styles_ChartBarInline_value__1Vrvv').each do |val|
+          contador += 1
+          array.push(val.inner_text)
+          if contador == 2
+            str = array.join(',')
+            puts str
+            csv << [str]
+            contador = 0
+            array = []
+          end 
+          
+        end
       end
 
     end
