@@ -10,6 +10,3 @@ link="https://aulapro.co/especiales-aulapro/los-100-mejores-cursos-de-coursera-d
 scrap1=Dani.new(link)
 scrap1.metodoPrincipal
 
-    end
-           
-end
