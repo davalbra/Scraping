@@ -40,7 +40,7 @@ class DavidBravo
     puts "inicio"
     dataCleaned.each do|i|
       specificData=i.split(",")
-      lenguajeObjeto << Lenguaje.new(specificData[0][3..-2],specificData[2][4..],specificData[3][4..])
+      lenguajeObjeto << Lenguaje.new(specificData[0][3..-2],specificData[2][4..],specificData[3][4..],specificData[1][12..])
     end
     return lenguajeObjeto
    
@@ -56,16 +56,16 @@ class DavidBravo
     for i in(0..arrLengua.size()-1)
       for e in(0..arrRanking.size()-1)
         if(arrLengua[i].nombre == arrRanking[e].nombre)
-          lenguajeObjeto << JoinRankingLenguaje.new(arrRanking[e].nombre,arrRanking[e].rankin,arrLengua[i].dinero,arrLengua[i].tiempo)
+          lenguajeObjeto << JoinRankingLenguaje.new(arrRanking[e].nombre,arrRanking[e].rankin,arrLengua[i].dinero,arrLengua[i].tiempo,arrLengua[i].encuesta)
 
         end
       end
     end
-    #print(lenguajeObjeto)
+    print(lenguajeObjeto)
     CSV.open('Busqueda.csv', 'wb') do |csv|
-      csv << %w[Nombre,Ranking,Dinero,Tiempo]
+      csv << %w[Nombre,Ranking,Dinero,Tiempo,Encuesta]
       for i in(0..lenguajeObjeto.size()-1)
-        csv << [lenguajeObjeto[i].nombre,lenguajeObjeto[i].rankin,lenguajeObjeto[i].dinero,lenguajeObjeto[i].tiempo]
+        csv << [lenguajeObjeto[i].nombre,lenguajeObjeto[i].rankin,lenguajeObjeto[i].dinero,lenguajeObjeto[i].tiempo,lenguajeObjeto[i].encuesta]
       end
       
     end
